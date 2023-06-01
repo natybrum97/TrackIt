@@ -3,20 +3,20 @@ import styled from 'styled-components';
 export default function Cabeçalho() {
 
     return (
-        <PageContainerTopo>
+        <PageContainerTopo data-test="header">
 
-        <PageContainer>
+            <PageContainer>
 
-            <NavContainer>
+                <NavContainer>
 
-                <h1>TrackIt</h1>
-                <img src='https://www.ocasaldafoto.com/wp-content/uploads/2018/09/Foto-de-Paisagem-Lago-da-Pampulha-Belo-Horizonte-Charles-Torres.jpg' />
+                    <h1>TrackIt</h1>
+                    <img data-test="avatar" src='https://www.ocasaldafoto.com/wp-content/uploads/2018/09/Foto-de-Paisagem-Lago-da-Pampulha-Belo-Horizonte-Charles-Torres.jpg' />
 
-            </NavContainer>
+                </NavContainer>
 
-        </PageContainer>
+            </PageContainer>
 
-    </PageContainerTopo>
+        </PageContainerTopo>
     )
 }
 

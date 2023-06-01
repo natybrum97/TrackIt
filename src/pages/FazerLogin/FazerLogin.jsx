@@ -61,11 +61,11 @@ export default function FazerLogin() {
 
                 <FormContainer isDisabled={enviado}>
 
-                    <input type="email" disabled={enviado} placeholder="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                    <input data-test="email-input" type="email" disabled={enviado} placeholder="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
 
-                    <input type="password" disabled={enviado} placeholder="senha" id="senha" value={senha} onChange={(e) => setSenha(e.target.value)} required />
+                    <input data-test="password-input" type="password" disabled={enviado} placeholder="senha" id="senha" value={senha} onChange={(e) => setSenha(e.target.value)} required />
 
-                    <button disabled={enviado} type="submit">
+                    <button data-test="login-btn" disabled={enviado} type="submit">
                         {enviado ? (
                             <ThreeDots color="#FFFFFF" height={20} width={20} />
                         ) : (
@@ -79,7 +79,7 @@ export default function FazerLogin() {
 
             </form>
 
-            <Link to='/cadastro'>
+            <Link data-test="signup-link" to='/cadastro'>
 
                 <CriarLogin>Não tem uma conta? Cadastre-se!</CriarLogin>
 

@@ -8,13 +8,13 @@ export default function FooterComponent() {
     const progress = 75;
 
     return (
-        <Footer>
+        <Footer data-test="menu">
 
             <FooterConteiner>
 
                 <NavFooter>
 
-                    <Link to="/habitos">
+                    <Link data-test="habit-link" to="/habitos">
 
                         <h1>Hábitos</h1>
 
@@ -47,7 +47,7 @@ export default function FooterComponent() {
 
                     </div>
 
-                    <Link to="/historico">
+                    <Link data-test="history-link" to="/historico">
 
                         <h1>Histórico</h1>
 

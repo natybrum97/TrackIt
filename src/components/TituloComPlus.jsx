@@ -9,7 +9,7 @@ export default function TituloComPlus(props) {
 
             <h1>{titulo}</h1>
 
-            <div onClick={onClick}>+</div>
+            <button data-test="habit-create-btn" onClick={onClick}>+</button>
 
         </Corpo>
     )
@@ -38,7 +38,7 @@ const Corpo = styled.div`
         text-align: left;
     }
 
-    div{
+    button {
         height: 35px;
         width: 40px;
         border-radius: 4.64px;
@@ -51,6 +51,7 @@ const Corpo = styled.div`
         letter-spacing: 0em;
         text-align: center;
         cursor: pointer;
+        border: none;
         display: ${props => props.display};
     }
 
