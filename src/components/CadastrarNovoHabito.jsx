@@ -3,35 +3,67 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { ThreeDots } from "react-loader-spinner";
 import { useEffect } from "react";
+import { useContext } from 'react';
+import { LoginContext } from '../Contexts/LoginContext';
+import axios from 'axios';
 
 export default function CadastrarNovoHabito(props) {
 
+    const { login } = useContext(LoginContext);
+    const token = login.token;
+
     const navigate = useNavigate();
 
-    const { tela1, setTela1, tela2, setTela2 } = props
+    const { tela1, setTela1, tela2, setTela2} = props
 
     const dias = ["D", "S", "T", "Q", "Q", "S", "S"];
 
     const [diasSelecionados, setDiasSelecionados] = useState([]);
     const [enviar, setEnviar] = useState(false);
+    const [criarhabito, setCriarHabito] = useState('');
 
-    `{/*
     useEffect(() => {
         if (enviar) {
             const timer = setTimeout(() => {
-                navigate("/historico");
+                navigate("/habitos");
             }, 1000);
 
             return () => clearTimeout(timer);
         }
     }, [enviar, navigate]);
-    *\}`
-    
 
 
-    function enviarInfos() {
+    function enviarInfos(e) {
+        e.preventDefault();
 
-        setEnviar(true);
+        const body = {
+            name: criarhabito,
+            days: diasSelecionados
+        }
+        console.log(body);
+
+        const config = {
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        }
+        console.log(config);
+
+        const linkURL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
+
+        const promise = axios.post(linkURL,body,config);
+
+        promise.then(resposta => {
+            setEnviar(true);
+            alert('Habito cadastrado com sucesso!')
+            console.log(resposta.data);
+        });
+
+        promise.catch(erro => {
+            setEnviar(false);
+            console.log(erro.response.data);
+            alert(erro.response.data.message);
+        });
 
     }
 
@@ -73,7 +105,7 @@ export default function CadastrarNovoHabito(props) {
 
             <ContainerAddHabitos data-test="habit-create-container" disabled={enviar}>
 
-                <input data-test="habit-name-input" disabled={enviar} type="text" placeholder="nome do hábito" />
+                <input data-test="habit-name-input" disabled={enviar} type="text" placeholder="nome do hábito" id="habito" value={criarhabito} onChange={(e) => setCriarHabito(e.target.value)} />
 
                 <ContainerDias>
 

@@ -1,6 +1,11 @@
 import styled from 'styled-components';
+import { useContext } from 'react';
+import { LoginContext } from '../Contexts/LoginContext';
 
 export default function Cabeçalho() {
+
+    const { login } = useContext(LoginContext);
+    const imageUrl = login.image;
 
     return (
         <PageContainerTopo data-test="header">
@@ -10,7 +15,7 @@ export default function Cabeçalho() {
                 <NavContainer>
 
                     <h1>TrackIt</h1>
-                    <img data-test="avatar" src='https://www.ocasaldafoto.com/wp-content/uploads/2018/09/Foto-de-Paisagem-Lago-da-Pampulha-Belo-Horizonte-Charles-Torres.jpg' />
+                    <img data-test="avatar" src={imageUrl} />
 
                 </NavContainer>
 

@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import styled from "styled-components"
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
 import { useEffect } from "react";
+import { LoginContext } from "../../Contexts/LoginContext";
 
 export default function FazerLogin() {
+
+    const {login, setLogin} = useContext(LoginContext);
+    console.log(login);
 
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
@@ -38,7 +42,7 @@ export default function FazerLogin() {
 
         promise.then(resposta => {
             setEnviado(true);
-            console.log(resposta.data);
+            setLogin(resposta.data);
         });
 
         promise.catch(erro => {
