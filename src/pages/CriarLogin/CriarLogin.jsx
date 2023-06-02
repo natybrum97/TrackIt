@@ -41,8 +41,10 @@ export default function FazerLogin() {
 
         const promise = axios.post(apiUrl, obj);
 
+        setEnviado(true);
+
         promise.then(resposta => {
-            setEnviado(true);
+            
             alert('Você foi cadastrado com sucesso!')
             console.log(resposta.data);
         });
