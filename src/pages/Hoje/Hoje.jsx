@@ -58,16 +58,13 @@ export default function Hoje() {
 
             <Central>
 
-                {porcentagem === 0 && (
+            <HabitosConcluidos data-test="today-counter" concluido={porcentagem > 0}>
 
-                    <HabitosConcluidos data-test="today-counter">Nenhum hábito concluído ainda</HabitosConcluidos>
-
-                )}
-                {porcentagem > 0 && (
-
-                    <HabitosConcluidos1 data-test="today-counter">{porcentagem}% dos hábitos concluídos</HabitosConcluidos1>
-
-                )}
+                {porcentagem === 0
+                    ? "Nenhum hábito concluído ainda"
+                    : `${porcentagem}% dos hábitos concluídos`}
+                    
+            </HabitosConcluidos>
 
                 <HabitosDeHoje />
 
@@ -89,18 +86,7 @@ const HabitosConcluidos = styled.div`
     line-height: 22px;
     letter-spacing: 0em;
     text-align: left;
-    color: #BABABA;
-`
-const HabitosConcluidos1 = styled.div`
-    width: calc(100vw - 34px);
-    height: 22px;
-    font-family: Lexend Deca;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 22px;
-    letter-spacing: 0em;
-    text-align: left;
-    color: #8FC549;
+    color: ${({ concluido }) => (concluido ? '#8FC549' : '#BABABA')};
 `
 const Central = styled.div`
     display: flex;
