@@ -55,7 +55,6 @@ export default function CadastrarNovoHabito(props) {
 
         promise.then(resposta => {
             setEnviar(true);
-            alert('Habito cadastrado com sucesso!')
             console.log(resposta.data);
             setListadeHabitos([...listadeHabitos, resposta.data]);
             setTela2(false);

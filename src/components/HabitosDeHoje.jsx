@@ -1,12 +1,119 @@
 import styled from 'styled-components';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { LoginContext } from '../Contexts/LoginContext';
 import check from '../assets/check.svg'
+import axios from 'axios';
+import { useEffect } from 'react';
 
 export default function HabitosDeHoje() {
 
-    const { login, habitosdeHoje, setHabitosdeHoje } = useContext(LoginContext);
+    const { login, habitosdeHoje, setHabitosdeHoje, porcentagem, setPorcentagem } = useContext(LoginContext);
     const token = login.token;
+
+
+    const [habitosMarcados, setHabitosMarcados] = useState([]);
+
+
+
+    useEffect(() => {
+        const habitosMarcados = habitosdeHoje.reduce(
+            (contador, habito) => (habito.done ? contador + 1 : contador),
+            0
+        );
+        setHabitosMarcados(habitosMarcados);
+    }, [habitosdeHoje]);
+
+
+
+    useEffect(() => {
+        const progresso = (habitosMarcados / habitosdeHoje.length) * 100;
+        const roundedProgresso = Math.round(progresso);
+      
+        const timer = setTimeout(() => {
+          setPorcentagem(roundedProgresso);
+        }, 0); // Atraso de 0 milissegundos
+      
+        return () => clearTimeout(timer); // Limpa o timer quando o efeito é desmontado
+      }, [habitosMarcados, habitosdeHoje.length]);
+      
+
+
+    function marcarHabito(id, marcado) {
+
+        const habitId = id;
+
+        const body = {};
+
+        const config = {
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        };
+
+        if (marcado === false) {
+
+
+            const promise = axios.post(
+                `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${habitId}/check`,
+                body,
+                config
+            );
+
+
+            promise.then(response => {
+                const updatedHabitos = habitosdeHoje.map(habito => {
+                    if (habito.id === habitId) {
+                        return {
+                            ...habito,
+                            done: true
+                        };
+                    }
+                    return habito;
+                });
+                setHabitosdeHoje(updatedHabitos);
+                console.log("Hábito marcado com sucesso!", marcado);
+            });
+
+
+            promise.catch(error => {
+                console.error("Ocorreu um erro ao marcar o hábito:", error);
+            });
+
+
+
+        } else {
+
+
+            const promise = axios.post(
+                `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${habitId}/uncheck`,
+                body,
+                config
+            );
+
+
+            promise.then(response => {
+                const updatedHabitos = habitosdeHoje.map(habito => {
+                    if (habito.id === habitId) {
+                        return {
+                            ...habito,
+                            done: false
+                        };
+                    }
+                    return habito;
+                });
+                setHabitosdeHoje(updatedHabitos);
+                console.log("Hábito desmarcado com sucesso!", marcado);
+            });
+
+
+
+            promise.catch(error => {
+                console.error("Ocorreu um erro ao desmarcar o hábito:", error);
+            });
+        }
+    }
+
+
 
     return (
 
@@ -21,13 +128,13 @@ export default function HabitosDeHoje() {
                         <h1>{habito.name}</h1>
 
                         <p>
-                            Sequência atual: {habito.currentSequence} dias <br />
-                            Seu recorde: {habito.highestSequence} dias
+                            Sequência atual: <Span1 isSelect={habito.done === true} isIgualeMaiorQueZero={habito.currentSequence === habito.highestSequence && habito.currentSequence > 0}> {habito.currentSequence} dias </Span1> <br />
+                            Seu recorde: <Span2 isSelect={habito.done === true} isIgualeMaiorQueZero={habito.currentSequence === habito.highestSequence && habito.currentSequence > 0}>{habito.highestSequence} dias</Span2>
                         </p>
 
                     </Titulo>
 
-                    <Check>
+                    <Check done={habito.done} onClick={() => marcarHabito(habito.id, habito.done)} >
 
                         <Image src={check}></Image>
 
@@ -102,14 +209,19 @@ const Titulo = styled.div`
     color: #666666;
     margin-top: 7px;
     }
-
+`
+const Span1 = styled.span`
+    color: ${({ isSelect, isIgualeMaiorQueZero }) => (isSelect || isIgualeMaiorQueZero ? '#8FC549' : '#666666')};
+`
+const Span2 = styled.span`
+    color: ${({ isIgualeMaiorQueZero }) => (isIgualeMaiorQueZero ? '#8FC549' : '#666666')};
 `
 const Check = styled.div`
     height: 69px;
     width: 69px;
     border-radius: 5px;
-    border: 1px solid #E7E7E7;
-    background-color: #EBEBEB;
+    border: 1px solid ${({ done }) => (done ? '#8FC549' : '#E7E7E7')};
+    background-color: ${({ done }) => (done ? '#8FC549' : '#EBEBEB')};
     display: flex;
     justify-content:center;
     align-items: center;

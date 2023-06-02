@@ -12,7 +12,7 @@ import 'dayjs/locale/pt-br';
 
 export default function Hoje() {
 
-    const { login, habitosdeHoje, setHabitosdeHoje } = useContext(LoginContext);
+    const { login, habitosdeHoje, setHabitosdeHoje, porcentagem } = useContext(LoginContext);
     const token = login.token;
 
     dayjs.locale('pt-br');
@@ -58,7 +58,16 @@ export default function Hoje() {
 
             <Central>
 
-                <HabitosConcluidos>Nenhum hábito concluído ainda</HabitosConcluidos>
+                {porcentagem === 0 && (
+
+                    <HabitosConcluidos>Nenhum hábito concluído ainda</HabitosConcluidos>
+
+                )}
+                {porcentagem > 0 && (
+
+                    <HabitosConcluidos1>{porcentagem}% dos hábitos concluídos</HabitosConcluidos1>
+
+                )}
 
                 <HabitosDeHoje />
 
@@ -81,6 +90,17 @@ const HabitosConcluidos = styled.div`
     letter-spacing: 0em;
     text-align: left;
     color: #BABABA;
+`
+const HabitosConcluidos1 = styled.div`
+    width: calc(100vw - 34px);
+    height: 22px;
+    font-family: Lexend Deca;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #8FC549;
 `
 const Central = styled.div`
     display: flex;
