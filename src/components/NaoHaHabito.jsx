@@ -3,9 +3,20 @@ import styled from 'styled-components';
 export default function NaoHaHabitos() {
 
     return (
+    <Align>
+
         <Habitosregistro>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</Habitosregistro>
+
+    </Align>
+        
     )
 }
+const Align = styled.div`
+    width: 100%;
+    height:74px;
+    padding-left: 17px;
+
+`
 
 const Habitosregistro = styled.div`
     width: calc(100vw - 32px);

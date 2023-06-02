@@ -209,10 +209,10 @@ const Titulo = styled.div`
     }
 `
 const Span1 = styled.span`
-    color: ${({ isSelect, isIgualeMaiorQueZero }) => (isSelect ? '#8FC549' : '#666666')};
+    color: ${({ isSelect, isIgualeMaiorQueZero }) => (isSelect || isIgualeMaiorQueZero ? '#8FC549' : '#666666')};
 `
 const Span2 = styled.span`
-    color: ${({ isIgualeMaiorQueZero, isSelect }) => (isIgualeMaiorQueZero && isSelect ? '#8FC549' : '#666666')};
+    color: ${({ isIgualeMaiorQueZero }) => (isIgualeMaiorQueZero ? '#8FC549' : '#666666')};
 `
 const Check = styled.button`
     height: 69px;

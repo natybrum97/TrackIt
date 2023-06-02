@@ -162,6 +162,7 @@ const ContainerAddHabitos = styled.div`
     border-radius:5px;
     background-color:#FFFFFF;
     margin-bottom:29px;
+    margin-left: 17px;
 
     input {
         width: calc(100vw - 72px);
