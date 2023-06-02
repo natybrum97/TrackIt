@@ -54,7 +54,7 @@ export default function Hoje() {
 
             <Cabeçalho />
 
-            <TituloComPlus data-test="today" titulo={diaSemanaFormatado + ", " + data} display={"none"} margin={"0px"} />
+            <TituloComPlus titulo={diaSemanaFormatado + ", " + data} display={"none"} margin={"0px"} />
 
             <Central>
 

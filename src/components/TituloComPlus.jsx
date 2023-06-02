@@ -7,7 +7,7 @@ export default function TituloComPlus(props) {
     return (
         <Corpo display={display} margin={margin}>
 
-            <h1>{titulo}</h1>
+            <h1 data-test="today">{titulo}</h1>
 
             <button data-test="habit-create-btn" onClick={onClick}>+</button>
 
