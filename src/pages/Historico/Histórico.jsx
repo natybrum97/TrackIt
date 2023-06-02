@@ -10,7 +10,7 @@ export default function Historico() {
 
             <Cabeçalho />
 
-            <TituloComPlus titulo={"Histórico"} display={"none"} />
+            <TituloComPlus titulo={"Histórico"} display={"none"} margin={"28px"} />
 
             <Container>
 

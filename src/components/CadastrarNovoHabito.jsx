@@ -9,7 +9,7 @@ import axios from 'axios';
 
 export default function CadastrarNovoHabito(props) {
 
-    const { login } = useContext(LoginContext);
+    const { login, listadeHabitos, setListadeHabitos } = useContext(LoginContext);
     const token = login.token;
 
     const navigate = useNavigate();
@@ -57,6 +57,9 @@ export default function CadastrarNovoHabito(props) {
             setEnviar(true);
             alert('Habito cadastrado com sucesso!')
             console.log(resposta.data);
+            setListadeHabitos([...listadeHabitos, resposta.data]);
+            setTela2(false);
+            setTela1(true);
         });
 
         promise.catch(erro => {

@@ -15,6 +15,7 @@ export default function Cabeçalho() {
                 <NavContainer>
 
                     <h1>TrackIt</h1>
+
                     <img data-test="avatar" src={imageUrl} />
 
                 </NavContainer>
@@ -36,7 +37,6 @@ const PageContainerTopo = styled.div`
     position: fixed;
     top: 0;
     margin-bottom:28px;
-
 `
 const PageContainer = styled.div`
     display: flex;
@@ -66,6 +66,7 @@ const NavContainer = styled.div`
         letter-spacing: 0em;
         text-align: left;
     }
+    
     img {
         height: 51px;
         width: 51px;

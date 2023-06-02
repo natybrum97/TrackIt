@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 export default function TituloComPlus(props) {
 
-    const {titulo, onClick, display} = props;
+    const {titulo, onClick, display, margin} = props;
 
     return (
-        <Corpo display={display}>
+        <Corpo display={display} margin={margin}>
 
             <h1>{titulo}</h1>
 
@@ -23,13 +23,13 @@ const Corpo = styled.div`
     margin-top:98px;
     padding-left:17px;
     padding-right:17px;
-    margin-bottom: 28px;
     background-color:#F2F2F2;
+    margin-bottom: ${props => props.margin};
     
     h1{
         color:#126BA5;
         height: 29px;
-        width: 148px;
+        width: auto;
         font-family: Lexend Deca;
         font-size: 23px;
         font-weight: 400;

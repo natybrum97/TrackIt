@@ -20,32 +20,36 @@ export default function FooterComponent() {
 
                     </Link>
 
-                    <div>
-                        <CircularProgressbar
-                            value={progress}
-                            text={`Hoje`}
-                            strokeWidth={10}
-                            styles={{
-                                path: {
-                                    stroke: '#FFFFFF',
-                                    strokeLinecap: 'round',
-                                },
-                                trail: {
-                                    stroke: '#52B6FF',
-                                    width: '6px'
+                    <Link to='/hoje'>
 
-                                },
-                                text: {
-                                    fill: '#FFFFFF',
-                                    fontSize: '18px',
-                                    fontWeight: 'bold',
-                                    fontFamily: 'Lexend Deca',
-                                    textAnchor: 'middle',
-                                },
-                            }}
-                        />
+                        <div>
+                            <CircularProgressbar
+                                value={progress}
+                                text={`Hoje`}
+                                strokeWidth={10}
+                                styles={{
+                                    path: {
+                                        stroke: '#FFFFFF',
+                                        strokeLinecap: 'round',
+                                    },
+                                    trail: {
+                                        stroke: '#52B6FF',
+                                        width: '6px'
 
-                    </div>
+                                    },
+                                    text: {
+                                        fill: '#FFFFFF',
+                                        fontSize: '18px',
+                                        fontWeight: 'bold',
+                                        fontFamily: 'Lexend Deca',
+                                        textAnchor: 'middle',
+                                    },
+                                }}
+                            />
+
+                        </div>
+
+                    </Link>
 
                     <Link data-test="history-link" to="/historico">
 

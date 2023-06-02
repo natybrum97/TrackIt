@@ -4,10 +4,12 @@ import FooterComponent from "../../components/FooterComponent";
 import CadastrarNovoHabito from "../../components/CadastrarNovoHabito";
 import NaoHaHabitos from "../../components/NaoHaHabito";
 import TituloComPlus from "../../components/TituloComPlus";
+import RenderizaHabitos from "../../components/RenderizaHabitos";
 import { useEffect } from "react";
+import axios from "axios";
 import { useContext } from 'react';
 import { LoginContext } from "../../Contexts/LoginContext";
-import axios from "axios";
+
 
 export default function Habitos(props) {
 
@@ -15,8 +17,6 @@ export default function Habitos(props) {
 
     const { login, listadeHabitos, setListadeHabitos } = useContext(LoginContext);
     const token = login.token;
-
-    console.log(listadeHabitos, "lista");
 
     useEffect(() => {
 
@@ -34,6 +34,7 @@ export default function Habitos(props) {
 
             setListadeHabitos(resposta.data);
             console.log(resposta.data, "lista");
+            setTela1(true);
 
         })
 
@@ -45,15 +46,12 @@ export default function Habitos(props) {
 
     }, []);
 
-
-
-
     return (
         <>
 
             <Cabeçalho />
 
-            <TituloComPlus titulo={"Meus hábitos"} display={"block"} onClick={() => {
+            <TituloComPlus titulo={"Meus hábitos"} display={"block"} margin={"28px"} onClick={() => {
                 setTela1(false);
                 setTela2(true);
             }} />
@@ -61,16 +59,30 @@ export default function Habitos(props) {
 
             <ContainerHabitos>
 
-                {tela1 && (
+                {tela1 && listadeHabitos.length === 0 && (
+
                     <NaoHaHabitos />
 
                 )}
 
-                {tela2 && (
+                {tela1 && listadeHabitos.length > 0 && (
+
+                    <RenderizaHabitos />
+
+                )}
+
+                {tela2 && listadeHabitos.length === 0 && (
                     <>
                         <CadastrarNovoHabito setTela1={setTela1} tela2={tela2} setTela2={setTela2} />
 
                         <NaoHaHabitos />
+                    </>
+                )}
+                 {tela2 && listadeHabitos.length > 0 && (
+                    <>
+                        <CadastrarNovoHabito setTela1={setTela1} tela2={tela2} setTela2={setTela2} />
+
+                        <RenderizaHabitos />
                     </>
                 )}
 
@@ -92,19 +104,4 @@ const ContainerHabitos = styled.div`
     width:100%;
     height: auto;
     background-color:#F2F2F2;
-`
-const ListContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width:100%;
-    height: auto;
-    background-color:#F2F2F2;
-`
-const HabitoContainer = styled.div`
-    height: 91px;
-    width: calc(100vw - 34px);
-    border-radius: 5px;
-    background: #FFFFFF;
 `

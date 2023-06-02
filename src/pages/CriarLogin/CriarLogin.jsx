@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
 import { useEffect } from "react";
+import logo from '../../assets/logo.svg'
 
 export default function FazerLogin() {
 
@@ -58,7 +59,7 @@ export default function FazerLogin() {
     return (
         <PageContainer>
 
-            <Logo>TrackIt</Logo>
+            <Image src={logo}></Image>
 
             <form onSubmit={enviarInfos}>
 
@@ -102,17 +103,7 @@ const PageContainer = styled.div`
     text-align: center;
     margin-top: 68px;
 `
-const Logo = styled.h1`
-    font-family: Playball;
-    font-size: 69px;
-    font-weight: 400;
-    line-height: 86px;
-    letter-spacing: 0em;
-    text-align: center;
-    color: #126BA5;
-    margin-bottom: 32.62px;
 
-`
 const FormContainer = styled.div`
     width: calc(100vw - 40px); 
     display: flex;
@@ -172,3 +163,9 @@ const CriarLogin = styled.div`
     text-decoration-line: underline;
     cursor: pointer;
 `
+const Image = styled.img`
+    height: 180px;
+    width: 180px;
+    margin-bottom: 32.62px;
+`
+

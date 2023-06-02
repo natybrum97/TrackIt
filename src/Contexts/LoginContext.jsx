@@ -6,9 +6,10 @@ export function LoginProvider ({children}) {
 
     const [login, setLogin] = useState({});
     const [listadeHabitos, setListadeHabitos] = useState({});
+    const [habitosdeHoje, setHabitosdeHoje] = useState([]);
 
     return (
-        <LoginContext.Provider value={{login, setLogin, listadeHabitos,setListadeHabitos}}>
+        <LoginContext.Provider value={{login, setLogin, listadeHabitos, setListadeHabitos, habitosdeHoje, setHabitosdeHoje}}>
             {children}
         </LoginContext.Provider>
     )

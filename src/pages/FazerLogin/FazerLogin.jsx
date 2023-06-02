@@ -5,10 +5,11 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
 import { useEffect } from "react";
 import { LoginContext } from "../../Contexts/LoginContext";
+import logo from '../../assets/logo.svg'
 
 export default function FazerLogin() {
 
-    const {login, setLogin} = useContext(LoginContext);
+    const { login, setLogin } = useContext(LoginContext);
     console.log(login);
 
     const navigate = useNavigate();
@@ -18,14 +19,14 @@ export default function FazerLogin() {
 
     useEffect(() => {
         if (enviado) {
-          const timer = setTimeout(() => {
-            navigate("/habitos");
-          }, 1000);
-    
-          return () => clearTimeout(timer);
+            const timer = setTimeout(() => {
+                navigate("/hoje");
+            }, 1000);
+
+            return () => clearTimeout(timer);
         }
-      }, [enviado, navigate]);
-    
+    }, [enviado, navigate]);
+
 
     function enviarInfos(e) {
         e.preventDefault();
@@ -59,7 +60,7 @@ export default function FazerLogin() {
     return (
         <PageContainer>
 
-            <Logo>TrackIt</Logo>
+            <Image src={logo}></Image>
 
             <form onSubmit={enviarInfos}>
 
@@ -168,4 +169,9 @@ const CriarLogin = styled.div`
     text-align: center;
     text-decoration-line: underline;
     cursor: pointer;
+`
+const Image = styled.img`
+    height: 180px;
+    width: 180px;
+    margin-bottom: 32.62px;
 `
