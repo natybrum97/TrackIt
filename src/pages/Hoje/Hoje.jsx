@@ -60,7 +60,7 @@ export default function Hoje() {
 
             <HabitosConcluidos data-test="today-counter" concluido={porcentagem > 0}>
 
-                {porcentagem === 0
+                {habitosdeHoje.length === 0 || porcentagem === 0
                     ? "Nenhum hábito concluído ainda"
                     : `${porcentagem}% dos hábitos concluídos`}
                     
