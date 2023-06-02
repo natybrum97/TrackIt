@@ -22,7 +22,7 @@ export default function FooterComponent() {
 
                     </Link>
 
-                    <Link to='/hoje'>
+                    <Link data-test="today-link" to='/hoje'>
 
                         <div>
                             <CircularProgressbar

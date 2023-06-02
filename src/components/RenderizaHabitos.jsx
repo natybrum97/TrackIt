@@ -40,13 +40,13 @@ export default function RenderizaHabitos() {
             <ListContainer>
                 {listadeHabitos.map((habito) => (
 
-                    <HabitoContainer key={habito.id}>
+                    <HabitoContainer data-test="habit-container" key={habito.id}>
 
                         <TituloeDelete>
 
-                            <h1>{habito.name}</h1>
+                            <h1 data-test="habit-name">{habito.name}</h1>
 
-                            <ion-icon onClick={() => deletar(habito.id)} name="trash-outline"></ion-icon>
+                            <ion-icon data-test="habit-delete-btn" onClick={() => deletar(habito.id)} name="trash-outline"></ion-icon>
 
                         </TituloeDelete>
 
@@ -54,7 +54,7 @@ export default function RenderizaHabitos() {
 
                             {dias.map((dia, index) => (
 
-                                <CadaDia
+                                <CadaDia data-test="habit-day"
 
                                     key={index}
 

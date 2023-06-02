@@ -54,18 +54,18 @@ export default function Hoje() {
 
             <Cabeçalho />
 
-            <TituloComPlus titulo={diaSemanaFormatado + ", " + data} display={"none"} margin={"0px"} />
+            <TituloComPlus data-test="today" titulo={diaSemanaFormatado + ", " + data} display={"none"} margin={"0px"} />
 
             <Central>
 
                 {porcentagem === 0 && (
 
-                    <HabitosConcluidos>Nenhum hábito concluído ainda</HabitosConcluidos>
+                    <HabitosConcluidos data-test="today-counter">Nenhum hábito concluído ainda</HabitosConcluidos>
 
                 )}
                 {porcentagem > 0 && (
 
-                    <HabitosConcluidos1>{porcentagem}% dos hábitos concluídos</HabitosConcluidos1>
+                    <HabitosConcluidos1 data-test="today-counter">{porcentagem}% dos hábitos concluídos</HabitosConcluidos1>
 
                 )}
 

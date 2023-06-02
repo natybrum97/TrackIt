@@ -121,20 +121,18 @@ export default function HabitosDeHoje() {
 
             {habitosdeHoje.map((habito) => (
 
-                <HabitoContainer key={habito.id}>
+                <HabitoContainer data-test="today-habit-container" key={habito.id}>
 
                     <Titulo>
 
-                        <h1>{habito.name}</h1>
+                        <h1 data-test="today-habit-name">{habito.name}</h1>
 
-                        <p>
-                            Sequência atual: <Span1 isSelect={habito.done === true} isIgualeMaiorQueZero={habito.currentSequence === habito.highestSequence && habito.currentSequence > 0}> {habito.currentSequence} dias </Span1> <br />
-                            Seu recorde: <Span2 isSelect={habito.done === true} isIgualeMaiorQueZero={habito.currentSequence === habito.highestSequence && habito.currentSequence > 0}>{habito.highestSequence} dias</Span2>
-                        </p>
+                        <p data-test="today-habit-sequence">Sequência atual: <Span1 isSelect={habito.done === true} isIgualeMaiorQueZero={habito.currentSequence === habito.highestSequence && habito.currentSequence > 0}> {habito.currentSequence} dias </Span1> </p>
+                        <p data-test="today-habit-record">Seu recorde: <Span2 isSelect={habito.done === true} isIgualeMaiorQueZero={habito.currentSequence === habito.highestSequence && habito.currentSequence > 0}>{habito.highestSequence} dias</Span2></p>
 
                     </Titulo>
 
-                    <Check done={habito.done} onClick={() => marcarHabito(habito.id, habito.done)} >
+                    <Check data-test="today-habit-check-btn" done={habito.done} onClick={() => marcarHabito(habito.id, habito.done)} >
 
                         <Image src={check}></Image>
 
@@ -216,7 +214,7 @@ const Span1 = styled.span`
 const Span2 = styled.span`
     color: ${({ isIgualeMaiorQueZero }) => (isIgualeMaiorQueZero ? '#8FC549' : '#666666')};
 `
-const Check = styled.div`
+const Check = styled.button`
     height: 69px;
     width: 69px;
     border-radius: 5px;
