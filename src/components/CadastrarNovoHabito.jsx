@@ -53,8 +53,10 @@ export default function CadastrarNovoHabito(props) {
 
         const promise = axios.post(linkURL,body,config);
 
+        setEnviar(true);
+
         promise.then(resposta => {
-            setEnviar(true);
+            
             console.log(resposta.data);
             setListadeHabitos([...listadeHabitos, resposta.data]);
             setTela2(false);
