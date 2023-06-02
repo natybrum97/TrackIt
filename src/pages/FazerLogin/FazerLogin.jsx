@@ -41,8 +41,10 @@ export default function FazerLogin() {
 
         const promise = axios.post(url, obj);
 
+        setEnviado(true);
+
         promise.then(resposta => {
-            setEnviado(true);
+           
             setLogin(resposta.data);
         });
 
