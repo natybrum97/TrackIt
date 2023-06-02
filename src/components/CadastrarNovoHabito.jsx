@@ -107,7 +107,9 @@ export default function CadastrarNovoHabito(props) {
 
     return (
 
-            <ContainerAddHabitos data-test="habit-create-container" disabled={enviar}>
+        <form onSubmit={enviarInfos}>
+
+            <ContainerAddHabitos data-test="habit-create-container">
 
                 <input data-test="habit-name-input" disabled={enviar} type="text" placeholder="nome do hábito" id="habito" value={criarhabito} onChange={(e) => setCriarHabito(e.target.value)} />
 
@@ -115,7 +117,7 @@ export default function CadastrarNovoHabito(props) {
 
                     {dias.map((dia, index) => (
 
-                        <CadaDia data-test="habit-day" disabled={enviar}
+                        <CadaDia type="button" data-test="habit-day" disabled={enviar}
 
                             key={index}
 
@@ -138,7 +140,7 @@ export default function CadastrarNovoHabito(props) {
                         setTela2(false);
                     }}>Cancelar</Button1>
 
-                    <Button2 data-test="habit-create-save-btn" disabled={enviar} onClick={enviarInfos}>
+                    <Button2 type='submit' data-test="habit-create-save-btn" disabled={enviar}>
                         {enviar ? (
                             <ThreeDots color="#FFFFFF" height={20} width={20} />
                         ) : (
@@ -149,6 +151,7 @@ export default function CadastrarNovoHabito(props) {
                 </ContainerButtons>
 
             </ContainerAddHabitos>
+            </form>
     )
 }
 
