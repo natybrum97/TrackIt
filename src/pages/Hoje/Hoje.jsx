@@ -56,19 +56,16 @@ export default function Hoje() {
 
             <TituloComPlus titulo={diaSemanaFormatado + ", " + data} display={"none"} margin={"0px"} />
 
-            <Central>
 
             <HabitosConcluidos data-test="today-counter" concluido={porcentagem > 0}>
 
                 {habitosdeHoje.length === 0 || porcentagem === 0
                     ? "Nenhum hábito concluído ainda"
                     : `${porcentagem}% dos hábitos concluídos`}
-                    
+
             </HabitosConcluidos>
 
-                <HabitosDeHoje />
-
-            </Central>
+            <HabitosDeHoje />
 
             <FooterComponent />
 
@@ -87,10 +84,5 @@ const HabitosConcluidos = styled.div`
     letter-spacing: 0em;
     text-align: left;
     color: ${({ concluido }) => (concluido ? '#8FC549' : '#BABABA')};
-`
-const Central = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    margin-left: 18px;
 `

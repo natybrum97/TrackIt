@@ -109,7 +109,7 @@ export default function CadastrarNovoHabito(props) {
 
         <form onSubmit={enviarInfos}>
 
-            <ContainerAddHabitos>
+            <ContainerAddHabitos data-test="habit-create-container">
 
                 <input data-test="habit-name-input" disabled={enviar} type="text" placeholder="nome do hábito" id="habito" value={criarhabito} onChange={(e) => setCriarHabito(e.target.value)} />
 
