@@ -36,7 +36,6 @@ const PageContainerTopo = styled.div`
     box-shadow: 0px 4px 4px 0px #00000026;
     position: fixed;
     top: 0;
-    left:0;
     margin-bottom:28px;
 `
 const PageContainer = styled.div`

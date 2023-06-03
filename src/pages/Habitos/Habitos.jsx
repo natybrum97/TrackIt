@@ -57,6 +57,8 @@ export default function Habitos(props) {
             }} />
 
 
+            <ContainerHabitos>
+
                 {tela1 && listadeHabitos.length === 0 && (
 
                     <NaoHaHabitos />
@@ -83,6 +85,9 @@ export default function Habitos(props) {
                         <RenderizaHabitos />
                     </>
                 )}
+
+
+            </ContainerHabitos>
 
             <FooterComponent />
 

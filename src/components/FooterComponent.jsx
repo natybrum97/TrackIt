@@ -77,7 +77,6 @@ const Footer = styled.div`
     box-shadow: 0px 4px 4px 0px #00000026;
     position: fixed;
     bottom:0;
-    left:0;
 
 `
 const FooterConteiner = styled.div`

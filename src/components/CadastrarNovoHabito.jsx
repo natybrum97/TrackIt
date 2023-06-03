@@ -26,7 +26,7 @@ export default function CadastrarNovoHabito(props) {
         if (enviar) {
             const timer = setTimeout(() => {
                 navigate("/habitos");
-            }, 10000);
+            }, 1000);
 
             return () => clearTimeout(timer);
         }
@@ -54,11 +54,10 @@ export default function CadastrarNovoHabito(props) {
         const promise = axios.post(linkURL, body, config);
 
         setEnviar(true);
-        setTela2(false);
-        setTela1(true);
 
         promise.then(resposta => {
-
+            setTela2(false);
+            setTela1(true);
             console.log(resposta.data);
             setListadeHabitos([...listadeHabitos, resposta.data]);
 
@@ -108,9 +107,9 @@ export default function CadastrarNovoHabito(props) {
 
     return (
 
-        <form onSubmit={enviarInfos}>
+        <form data-test="habit-create-container" onSubmit={enviarInfos}>
 
-            <ContainerAddHabitos data-test="habit-create-container">
+            <ContainerAddHabitos>
 
                 <input data-test="habit-name-input" disabled={enviar} type="text" placeholder="nome do hábito" id="habito" value={criarhabito} onChange={(e) => setCriarHabito(e.target.value)} />
 
