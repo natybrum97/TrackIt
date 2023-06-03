@@ -162,7 +162,7 @@ const ListContainer = styled.div`
 `
 const HabitoContainer = styled.div`
     height: 94px;
-    width: calc(100vw - 34px);
+    width: calc(100vw - 45px);
     border-radius: 5px;
     background: #FFFFFF;
     display: flex;
@@ -174,7 +174,7 @@ const HabitoContainer = styled.div`
 `
 const Titulo = styled.div`
     height: 64px;
-    width: 300px;
+    width: auto;
     border-radius: 5px;
     margin-top:13px;
     margin-bottom:8px;
