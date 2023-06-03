@@ -14,7 +14,7 @@ export default function CadastrarNovoHabito(props) {
 
     const navigate = useNavigate();
 
-    const { tela1, setTela1, tela2, setTela2} = props
+    const { tela1, setTela1, tela2, setTela2 } = props
 
     const dias = ["D", "S", "T", "Q", "Q", "S", "S"];
 
@@ -26,7 +26,7 @@ export default function CadastrarNovoHabito(props) {
         if (enviar) {
             const timer = setTimeout(() => {
                 navigate("/habitos");
-            }, 1000);
+            }, 10000);
 
             return () => clearTimeout(timer);
         }
@@ -51,16 +51,17 @@ export default function CadastrarNovoHabito(props) {
 
         const linkURL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
 
-        const promise = axios.post(linkURL,body,config);
+        const promise = axios.post(linkURL, body, config);
 
         setEnviar(true);
+        setTela2(false);
+        setTela1(true);
 
         promise.then(resposta => {
-            
+
             console.log(resposta.data);
             setListadeHabitos([...listadeHabitos, resposta.data]);
-            setTela2(false);
-            setTela1(true);
+
         });
 
         promise.catch(erro => {
@@ -151,7 +152,7 @@ export default function CadastrarNovoHabito(props) {
                 </ContainerButtons>
 
             </ContainerAddHabitos>
-            </form>
+        </form>
     )
 }
 
