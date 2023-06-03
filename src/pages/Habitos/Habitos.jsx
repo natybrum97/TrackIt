@@ -57,7 +57,7 @@ export default function Habitos(props) {
             }} />
 
 
-            <ContainerHabitos>
+            <ContainerHabitos data-test="habit-create-container">
 
                 {tela1 && listadeHabitos.length === 0 && (
 

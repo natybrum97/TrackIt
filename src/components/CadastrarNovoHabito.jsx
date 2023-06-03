@@ -107,7 +107,7 @@ export default function CadastrarNovoHabito(props) {
 
     return (
 
-        <form data-test="habit-create-container" onSubmit={enviarInfos}>
+        <form onSubmit={enviarInfos}>
 
             <ContainerAddHabitos>
 
