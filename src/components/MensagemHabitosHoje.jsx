@@ -1,27 +1,21 @@
 import styled from 'styled-components';
 import { useContext } from 'react';
 import { LoginContext } from '../Contexts/LoginContext';
-import { useState } from 'react';
-import { useEffect } from 'react';
 
 export default function MensagemHabitosHoje() {
+
     const { habitosdeHoje, porcentagem } = useContext(LoginContext);
-    const [mensagem, setMensagem] = useState('');
-    const [showCompleted, setShowCompleted] = useState(false);
-  
-    useEffect(() => {
-      if (habitosdeHoje.length > 0 || porcentagem > 0) {
-        setMensagem(`${porcentagem}% dos hábitos concluídos`);
-        setShowCompleted(true);
-      } else if (!showCompleted) {
-        setMensagem(null);
-      } else {
-        setMensagem('Nenhum hábito concluído ainda');
-      }
-    }, [habitosdeHoje, porcentagem]);
-  
-    return <HabitosConcluidos data-test="today-counter" concluido={porcentagem > 0}>{mensagem}</HabitosConcluidos>;
-  }
+
+    return (
+        <HabitosConcluidos data-test="today-counter" concluido={porcentagem > 0}>
+
+            {habitosdeHoje.length === 0 || porcentagem === 0
+                ? "Nenhum hábito concluído ainda"
+                : `${porcentagem}% dos hábitos concluídos`}
+
+        </HabitosConcluidos>
+    )
+}
 
 const HabitosConcluidos = styled.div`
     width: calc(100vw - 34px);
