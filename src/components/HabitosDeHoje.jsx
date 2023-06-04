@@ -128,7 +128,7 @@ export default function HabitosDeHoje() {
                         <h1 data-test="today-habit-name">{habito.name}</h1>
 
                         <p>Sequência atual: <Span1 data-test="today-habit-sequence" isSelect={habito.done === true} isIgualeMaiorQueZero={habito.currentSequence === habito.highestSequence && habito.currentSequence > 0}> {habito.currentSequence} dias </Span1> </p>
-                        <p>Seu recorde: <Span2 data-test="today-habit-record" isSelect={habito.done === true} isIgualeMaiorQueZero={habito.currentSequence === habito.highestSequence && habito.currentSequence > 0}>{habito.highestSequence} dias</Span2></p>
+                        <p data-test="today-habit-record">Seu recorde: <Span2 isSelect={habito.done === true} isIgualeMaiorQueZero={habito.currentSequence === habito.highestSequence && habito.currentSequence > 0}>{habito.highestSequence} dias</Span2></p>
 
                     </Titulo>
 
