@@ -71,18 +71,16 @@ export default function Habitos(props) {
 
                 )}
 
-                {tela2 && listadeHabitos.length === 0 && (
+                {tela2 && (
                     <>
                         <CadastrarNovoHabito setTela1={setTela1} tela2={tela2} setTela2={setTela2} />
-
-                        <NaoHaHabitos />
-                    </>
-                )}
-                 {tela2 && listadeHabitos.length > 0 && (
-                    <>
-                        <CadastrarNovoHabito setTela1={setTela1} tela2={tela2} setTela2={setTela2} />
-
-                        <RenderizaHabitos />
+                        {listadeHabitos.length === 0 && (
+                            <NaoHaHabitos />
+                        )}
+                         {listadeHabitos.length > 0 && (
+                            <RenderizaHabitos />
+                        )}
+                        
                     </>
                 )}
 
